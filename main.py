@@ -6,16 +6,16 @@ from langchain.vectorstores import FAISS
 import streamlit as st
 import os
 
-# api_key = "sk-API_key"
+api_key = "sk-API_key"
 # v = input("Enter API KEY: ")
 
 st.set_page_config("Dlubal ChatBot")
 # api_key = api_key+str(v)
-st.write('Enter OpenAI API Key 👇')
-api_key = st.text_input(
-    label="### Your OpenAI API key 👇",
-    placeholder="Paste your openAI API key, sk-",
-    type="password")
+# st.sidebar.write('Enter OpenAI API Key 👇')
+# api_key = st.sidebar.text_input(
+#     label="### Your OpenAI API key 👇",
+#     placeholder="Paste your openAI API key, sk-",
+#     type="password")
 
 os.environ['OPENAI_API_KEY'] = str(api_key)
 
