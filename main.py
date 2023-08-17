@@ -25,7 +25,7 @@ os.environ['OPENAI_API_KEY'] = str(api_key)
 user_api_key = os.getenv("OPENAI_API_KEY", "")
 
 st.write("1")
-csv_file_path = dirName + r".\faq_data.csv"
+csv_file_path = r".\faq_data.csv"
 st.write("2")
 if csv_file_path:
     st.write("3")
