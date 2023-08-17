@@ -11,8 +11,8 @@ import os
 
 st.set_page_config("Dlubal ChatBot")
 # api_key = api_key+str(v)
-st.sidebar.write('Enter OpenAI API Key 👇')
-api_key = st.sidebar.text_input(
+st.write('Enter OpenAI API Key 👇')
+api_key = st.text_input(
     label="### Your OpenAI API key 👇",
     placeholder="Paste your openAI API key, sk-",
     type="password")
