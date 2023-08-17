@@ -13,6 +13,7 @@ dirName = os.path.dirname(__file__)
 # v = input("Enter API KEY: ")
 
 st.set_page_config("Dlubal ChatBot")
+st.title('Dlubal ChatBot')
 # api_key = api_key+str(v)
 st.sidebar.write('Enter OpenAI API Key 👇')
 api_key = st.sidebar.text_input(
@@ -24,14 +25,14 @@ os.environ['OPENAI_API_KEY'] = str(api_key)
 
 user_api_key = os.getenv("OPENAI_API_KEY", "")
 
-st.write("1")
+# st.write("1")
 csv_file_path = "faq_data.csv"
-st.write("2")
-if csv_file_path:
-    st.write("3")
+# st.write("2")
+if api_key and csv_file_path:
+    # st.write("3")
     loader = CSVLoader(file_path=csv_file_path, encoding="utf-8")
     data = loader.load()
-    st.write("4")
+    # st.write("4")
 
     embeddings = OpenAIEmbeddings(openai_api_key=user_api_key)
     vectors = FAISS.from_documents(data, embeddings)
@@ -48,8 +49,6 @@ if csv_file_path:
 
     history = []
     # print("Hello! Ask me anything about Dlubal Products")
-
-    st.title('Dlubal ChatBot')
     user_input = st.text_input('Question:', placeholder='Ask me about Dlubal Products..!')
     ask = st.button('Ask')
     if user_input or ask:
