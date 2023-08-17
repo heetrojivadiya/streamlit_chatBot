@@ -6,24 +6,27 @@ from langchain.vectorstores import FAISS
 import streamlit as st
 import os
 
-api_key = "sk-API_key"
+baseName = os.path.basename(__file__)
+dirName = os.path.dirname(__file__)
+
+# api_key = "sk-API_key"
 # v = input("Enter API KEY: ")
 
 st.set_page_config("Dlubal ChatBot")
 # api_key = api_key+str(v)
-# st.sidebar.write('Enter OpenAI API Key 👇')
-# api_key = st.sidebar.text_input(
-#     label="### Your OpenAI API key 👇",
-#     placeholder="Paste your openAI API key, sk-",
-#     type="password")
+st.sidebar.write('Enter OpenAI API Key 👇')
+api_key = st.sidebar.text_input(
+    label="### Your OpenAI API key 👇",
+    placeholder="Paste your openAI API key, sk-",
+    type="password")
 
 os.environ['OPENAI_API_KEY'] = str(api_key)
 
 user_api_key = os.getenv("OPENAI_API_KEY", "")
 
-csv_file_path = r".\faq_data.csv"
+csv_file_path = dirName + r".\faq_data.csv"
 
-if api_key and os.path.isfile(csv_file_path):
+if os.path.isfile(csv_file_path) and api_key:
     loader = CSVLoader(file_path=csv_file_path, encoding="utf-8")
     data = loader.load()
 
