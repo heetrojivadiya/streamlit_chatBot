@@ -24,11 +24,14 @@ os.environ['OPENAI_API_KEY'] = str(api_key)
 
 user_api_key = os.getenv("OPENAI_API_KEY", "")
 
+st.write("1")
 csv_file_path = dirName + r".\faq_data.csv"
-
-if os.path.isfile(csv_file_path) and api_key:
+st.write("2")
+if os.path.isfile(csv_file_path):
+    st.write("3")
     loader = CSVLoader(file_path=csv_file_path, encoding="utf-8")
     data = loader.load()
+    st.write("4")
 
     embeddings = OpenAIEmbeddings(openai_api_key=user_api_key)
     vectors = FAISS.from_documents(data, embeddings)
